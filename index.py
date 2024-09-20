@@ -21,3 +21,8 @@ driver = webdriver.Chrome(service=service , options=options)
 
 url = 'https://estacio.br/'
 driver.get(url)
+
+# encontrando elementos através de tags
+#resultado = driver.find_elements(By.TAG_NAME, 'a')
+resultado = driver.find_element(By.ID, '__next')
+print(resultado)
