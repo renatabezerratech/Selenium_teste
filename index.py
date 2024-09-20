@@ -19,10 +19,10 @@ driver = webdriver.Chrome(service=service , options=options)
 
 # para buscar o site através da url e abrir
 
-url = 'https://estacio.br/'
+url = 'https://books.toscrape.com/'
 driver.get(url)
 
 # encontrando elementos através de tags
 #resultado = driver.find_elements(By.TAG_NAME, 'a')
-resultado = driver.find_element(By.ID, '__next')
+resultado = driver.find_element(By.TAG_NAME,'a').text
 print(resultado)
