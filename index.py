@@ -22,7 +22,16 @@ driver = webdriver.Chrome(service=service , options=options)
 url = 'https://books.toscrape.com/'
 driver.get(url)
 
-# encontrando elementos através de tags
-#resultado = driver.find_elements(By.TAG_NAME, 'a')
-resultado = driver.find_element(By.TAG_NAME,'a').text
+# encontrando elementos através de tags:
+
+#-----  assim retorna o que está atribuído a title do elemento 54   -----
+resultado = driver.find_elements(By.TAG_NAME, 'a')[54].get_attribute('title') 
+
+#-----  assim retorna o que está atribuído a title do elemento 54 até 94 de 2 em 2 (não dá pra usar get_attribute )  -----
+#resultado = driver.find_elements(By.TAG_NAME, 'a')[54:94:2].get_attribute('title') 
+
+#-----  assim retorna o que está escrito no link  -----
+#resultado = driver.find_element(By.TAG_NAME,'a').text    
+
+
 print(resultado)
