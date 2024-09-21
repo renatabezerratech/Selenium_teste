@@ -19,8 +19,7 @@ driver = webdriver.Chrome(service=service , options=options)
 
 # para buscar o site através da url e abrir
 
-url = 'https://books.toscrape.com/'
-driver.get(url)
+driver.get('https://books.toscrape.com/')
 
 #---------------ENCONTRANDO ELEMENTOS ATRAVÉS DE TAGS------------------------------
 
@@ -33,9 +32,19 @@ driver.get(url)
 #-----  assim retorna o que está escrito no link  -----
 #resultado = driver.find_element(By.TAG_NAME,'a').text    
 
-
 #print(resultado)
 
+
+#title = driver.title
+#print(title)
+
 #--------------------CRIANDO UMA LISTA----------------------------------------------
-resultado = driver.find_elements(By.TAG_NAME,'a')[54:94:2]
-[title.__getattribute__('title') for title in resultado]
+
+
+#resultado = len(driver.find_elements(By.TAG_NAME, 'a')[54:94:2])
+#print(resultado, 'livros')
+
+resultado = driver.find_elements(By.TAG_NAME, 'a')[54:94:2]
+for R in resultado:
+    print(R.text)
+
