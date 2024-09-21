@@ -26,7 +26,7 @@ driver.get('https://books.toscrape.com/')
 #-----  assim retorna o que está atribuído a title do elemento 54   -----
 #resultado = driver.find_elements(By.TAG_NAME, 'a')[54].get_attribute('title') 
 
-#-----  assim retorna o que está atribuído a title do elemento 54 até 94 de 2 em 2 (não dá pra usar get_attribute )  -----
+#-----  assim retorna o que está atribuído a title do elemento 54 até 94 de 2 em 2   -----
 #resultado = driver.find_elements(By.TAG_NAME, 'a')[54:94:2][0].text 
 
 #-----  assim retorna o que está escrito no link  -----
@@ -44,7 +44,10 @@ driver.get('https://books.toscrape.com/')
 #resultado = len(driver.find_elements(By.TAG_NAME, 'a')[54:94:2])
 #print(resultado, 'livros')
 
-resultado = driver.find_elements(By.TAG_NAME, 'a')[54:94:2]
-for R in resultado:
-    print(R.text)
+#resultado = driver.find_elements(By.TAG_NAME, 'a')[54:94:2]
+#for R in resultado:
+#    print(R.text)
 
+resultado = driver.find_elements(By.TAG_NAME, 'a')[54:94:2]
+
+print([title.get_attribute('title') for title in resultado])
