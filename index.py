@@ -52,10 +52,15 @@ resultado = driver.find_elements(By.TAG_NAME, 'a')[54:94:2]
 
 #print([title.get_attribute('title') for title in resultado])
 
-resultado[0].click()
-quantLivros = int(driver.find_element(By.CLASS_NAME, 'instock').text.replace('In stock (','').replace('available)', ''))
-print(quantLivros)
+#resultado[0].click()
 
-    
+estoque = []
+for title in resultado:
+    title.click()
+    quantLivros = int(driver.find_element(By.CLASS_NAME, 'instock').text.replace('In stock (','').replace('available)', ''))
+    #print(quantLivros)
+    estoque.append(quantLivros)
+    driver.back()
+print(estoque)
 
     
