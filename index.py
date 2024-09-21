@@ -50,4 +50,12 @@ driver.get('https://books.toscrape.com/')
 
 resultado = driver.find_elements(By.TAG_NAME, 'a')[54:94:2]
 
-print([title.get_attribute('title') for title in resultado])
+#print([title.get_attribute('title') for title in resultado])
+
+resultado[0].click()
+quantLivros = int(driver.find_element(By.CLASS_NAME, 'instock').text.replace('In stock (','').replace('available)', ''))
+print(quantLivros)
+
+    
+
+    
