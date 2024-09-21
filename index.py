@@ -49,18 +49,31 @@ driver.get('https://books.toscrape.com/')
 #    print(R.text)
 
 resultado = driver.find_elements(By.TAG_NAME, 'a')[54:94:2]
-
-#print([title.get_attribute('title') for title in resultado])
+title = [title.get_attribute('title') for title in resultado]
+#print(title)
 
 #resultado[0].click()
 
 estoque = []
-for title in resultado:
-    title.click()
+for td in resultado:
+    td.click()
     quantLivros = int(driver.find_element(By.CLASS_NAME, 'instock').text.replace('In stock (','').replace('available)', ''))
     #print(quantLivros)
     estoque.append(quantLivros)
     driver.back()
-print(estoque)
+#print(estoque)
 
-    
+
+
+#tabela
+
+# Ajustar o número máximo de caracteres exibidos por coluna
+pd.set_option('display.max_colwidth', None)
+
+df = {'titulo' : title, 'estoque': estoque}
+
+tabela = pd.DataFrame(df)
+
+print(tabela)
+
+tabela.to_excel('estoque_produtos.xlsx', index=False)
